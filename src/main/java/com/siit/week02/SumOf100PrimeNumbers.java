@@ -1,6 +1,7 @@
-package com.elenaivanov.repositoryforhomework;
-import java.util.*;
+package com.siit.week02;
+
 public class SumOf100PrimeNumbers {
+
     public static void main(String[] args) {
 
         int sum = 0;

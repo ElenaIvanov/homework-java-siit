@@ -1,4 +1,4 @@
-package com.elenaivanov.repositoryforhomework;
+package com.siit.week02;
 
 import java.util.Scanner;
 

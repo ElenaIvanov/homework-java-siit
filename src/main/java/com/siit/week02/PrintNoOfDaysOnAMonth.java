@@ -1,9 +1,10 @@
-package com.siit.homeworks.week03;
+package com.siit.week02;
 
 import java.util.Scanner;
 
-public class MethodNoOfDaysInMonth {
+public class PrintNoOfDaysOnAMonth {
     public static void main(String[] args) {
+
         Scanner input = new Scanner(System.in);
 
         int numberOfDaysInMonth = 0;
@@ -14,14 +15,6 @@ public class MethodNoOfDaysInMonth {
 
         System.out.print("Input a year: ");
         int year = input.nextInt();
-
-        System.out.println("The number of the days in the selected month is: "+ monthsOfYear(numberOfDaysInMonth));
-    }
-
-    public static int monthsOfYear (int month){
-        int year = 0;
-        String monthName;
-        int numberOfDaysInMonth = 0;
 
         switch (month) {
             case 1:
@@ -76,7 +69,7 @@ public class MethodNoOfDaysInMonth {
                 monthName = "December";
                 numberOfDaysInMonth = 31;
         }
-        return numberOfDaysInMonth;
+        System.out.println(monthName + " " + year + " has " + numberOfDaysInMonth + " days");
     }
 
 }

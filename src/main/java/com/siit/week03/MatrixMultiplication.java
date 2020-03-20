@@ -1,4 +1,4 @@
-package com.siit.homeworks.week03;
+package com.siit.week03;
 
 public class MatrixMultiplication {
     double[][] firstMatrix = {{ 4.00, 3.00 },
