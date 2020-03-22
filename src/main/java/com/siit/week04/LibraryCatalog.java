@@ -52,10 +52,7 @@ public class LibraryCatalog {
         System.out.println("Check the availability of the books in the library:");
         //calling the constuctor on the book coll
         LibraryCatalog lc = new LibraryCatalog(bookCollection);
-        lc.checkOutBook("Harry Potter and bla bla");
-        lc.setCurrentDay(15);
-        lc.returnBook("Harry Potter and bla bla");
-
+        //to finish
     }
 
 
