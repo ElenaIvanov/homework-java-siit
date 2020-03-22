@@ -1,21 +1,48 @@
 package com.siit.week04.BankPayment;
 
+import java.util.*;
+
 public class BankAccount extends User{
     public String iban;
     public long balance;
-    public String attachedCardNumbers;
+    public List<Card> attachedCardNumbers;
 
-    public BankAccount(String iban, long balance, String attachedCardNumbers. String cnp, String name) {
+    //constructors
+    public BankAccount(String iban){
         this.iban = iban;
-        this.balance = balance;
-        this.attachedCardNumbers = attachedCardNumbers;
+    }
+
+    public BankAccount(String name, String cnp, String iban, long balance) {
+        this.iban = iban;
+        this.attachedCardNumbers = new ArrayList<Card>();
     }
 
     //methods
-    public void addMoney() {
+    public void addMoney(long amount) throws Exception {
+        if(amount <= 0){
+            throw new Exception("Please add a positive amount multiple of 10!");
+        }
 
+        this.balance = this.balance + amount;
     }
 
+    public void withdrawMoney(long amount) throws Exception {
+        if(amount < 0){
+            throw new Exception("Please withdraw a positive amount multiple of 10!");
+        }
+
+        if(this.balance < amount){
+            throw new Exception("Insuficient funds!");
+        }
+
+        this.balance = this.balance - amount;
+    }
+
+    public void attachCard(Card cardNumber) {
+        this.attachedCardNumbers.add(cardNumber);
+    }
+
+    //getters and setters
     public String getIban() {
         return iban;
     }
@@ -32,11 +59,11 @@ public class BankAccount extends User{
         this.balance = balance;
     }
 
-    public String getAttachedCardNumbers() {
+    public List<Card> getAttachedCardNumbers() {
         return attachedCardNumbers;
     }
 
-    public void setAttachedCardNumbers(String attachedCardNumbers) {
+    public void setAttachedCardNumbers(List<Card> attachedCardNumbers) {
         this.attachedCardNumbers = attachedCardNumbers;
     }
 }

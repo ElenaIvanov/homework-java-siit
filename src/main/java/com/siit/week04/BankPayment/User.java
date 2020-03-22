@@ -1,21 +1,23 @@
 package com.siit.week04.BankPayment;
 
+import java.util.List;
+
 public class User {
     private String cnp;
     private String name;
     private String email;
     private String password;
 
-    public Card[] card;
-    public BankAccount[] bankAccounts;
+    public List<Card> cards;
+    public List<BankAccount> bankAccounts;
 
     //methods
     public void addCard(Card card){
-
+        this.cards.add(card);
     }
 
     public void addBankAccount(BankAccount bankAccount){
-
+        this.bankAccounts.add(bankAccount);
     }
 
     //default constructor
@@ -26,12 +28,12 @@ public class User {
         password = "";
     }
     //constructor with all args
-    public User(String cnp, String name, String email, String password) {
-        this.cnp = cnp;
-        this.name = name.toLowerCase();
-        this.email = email.toLowerCase();
-        this.password = password;
+
+    public User(List<Card> cards, List<BankAccount> bankAccounts) {
+        this.cards = cards;
+        this.bankAccounts = bankAccounts;
     }
+
     //constructor with 3 args
     public User(String name, String email, String password) {
         this.name = name;
@@ -80,15 +82,4 @@ public class User {
         this.password = password;
     }
 
-    public String openNewAccount(String cn, double d) {
-    }
-
-    public void depositTo(int an, double da) {
-    }
-
-    public void withdrawFrom(int acn, double wa) {
-    }
-
-    public void printAccountInfo(int anum) {
-    }
 }
