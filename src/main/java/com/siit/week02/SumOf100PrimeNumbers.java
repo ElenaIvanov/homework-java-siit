@@ -1,7 +1,7 @@
-package com.siit.week02;
+package com.siit.homeworks.week02;
 
+import java.util.*;
 public class SumOf100PrimeNumbers {
-
     public static void main(String[] args) {
 
         int sum = 0;

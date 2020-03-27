@@ -1,4 +1,4 @@
-package com.siit.week02;
+package com.siit.homeworks.week02;
 
 import java.util.Scanner;
 

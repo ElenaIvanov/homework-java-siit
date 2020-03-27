@@ -15,7 +15,6 @@ public class MatrixMultiplication {
         for(int i = 0; i<2; i++) {
             for(int j = 0; j<2; j++) {
                 System.out.println(result[i][j]);
-                System.out.println();
             }
         }
 
@@ -28,7 +27,7 @@ public class MatrixMultiplication {
         int secondMColumns = secondMatrix[0].length;
 
         if (firstMColumns != secondMRows) {
-            throw new IllegalArgumentException("A:Rows: " + firstMColumns + " did not match B:Columns " + secondMRows + ".");
+            throw new IllegalArgumentException("First Matrix Rows: " + firstMRows + " did not match Second Matrix Columns " + secondMColumns + ".");
         }
 
         double[][] thirdMatrix = new double[firstMRows][secondMColumns];
