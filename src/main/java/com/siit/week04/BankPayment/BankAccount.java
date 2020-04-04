@@ -1,69 +1,51 @@
 package com.siit.week04.BankPayment;
 
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.Setter;
+import lombok.ToString;
+
+import java.math.BigDecimal;
 import java.util.*;
 
-public class BankAccount extends User{
+@Getter
+@Setter
+@ToString
+public class BankAccount extends User {
     public String iban;
-    public long balance;
+    public BigDecimal balance;
     public List<Card> attachedCardNumbers;
 
-    //constructors
-    public BankAccount(String iban){
-        this.iban = iban;
+    public BankAccount(String cnp, String name, String email, String password, List<Card> cards, List<BankAccount> bankAccounts) {
+        super(cnp, name, email, password, cards, bankAccounts);
     }
 
-    public BankAccount(String name, String cnp, String iban, long balance) {
-        this.iban = iban;
-        this.attachedCardNumbers = new ArrayList<Card>();
-    }
+    //constructors
+
+
+    BigDecimal a = new BigDecimal(String.valueOf(balance));
 
     //methods
-    public void addMoney(long amount) throws Exception {
-        if(amount <= 0){
+    public void depositAmount(BigDecimal amount) throws Exception {
+
+        if (a.compareTo(amount) <= 0) {
             throw new Exception("Please add a positive amount multiple of 10!");
         }
 
-        this.balance = this.balance + amount;
+        this.balance = this.balance.add(a);
     }
 
-    public void withdrawMoney(long amount) throws Exception {
-        if(amount < 0){
+    public void withdrawMoney(BigDecimal amount) throws Exception {
+        if (a.compareTo(amount) <= 0) {
             throw new Exception("Please withdraw a positive amount multiple of 10!");
         }
 
-        if(this.balance < amount){
-            throw new Exception("Insuficient funds!");
-        }
+//        if(a.compareTo(amount) < amount){
+//            throw new Exception("Insuficient funds!");
+//        }
 
-        this.balance = this.balance - amount;
+        this.balance = this.balance.subtract(amount);
     }
 
-    public void attachCard(Card cardNumber) {
-        this.attachedCardNumbers.add(cardNumber);
-    }
 
-    //getters and setters
-    public String getIban() {
-        return iban;
-    }
-
-    public void setIban(String iban) {
-        this.iban = iban;
-    }
-
-    public long getBalance() {
-        return balance;
-    }
-
-    public void setBalance(long balance) {
-        this.balance = balance;
-    }
-
-    public List<Card> getAttachedCardNumbers() {
-        return attachedCardNumbers;
-    }
-
-    public void setAttachedCardNumbers(List<Card> attachedCardNumbers) {
-        this.attachedCardNumbers = attachedCardNumbers;
-    }
 }

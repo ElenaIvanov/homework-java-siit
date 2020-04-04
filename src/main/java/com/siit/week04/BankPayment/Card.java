@@ -1,9 +1,16 @@
 package com.siit.week04.BankPayment;
 
+import lombok.Getter;
+import lombok.Setter;
+import lombok.ToString;
+
+@Getter
+@Setter
+@ToString
 public class Card extends BankAccount{
     private long cardNumber;
     private int expirationDate;
-    private String cardOwner;
+    private String cardOwnerName;
 
     //constructors
     public Card(String name, String cnp, String iban, long balance, long cardNumber, int expirationDate) {
@@ -16,24 +23,6 @@ public class Card extends BankAccount{
         super(name, cnp, iban, balance);
         this.cardNumber = cardNumber;
         this.expirationDate = expirationDate;
-        this.cardOwner = cardOwner;
-    }
-
-
-    //getters ans setters
-    public long getCardNumber() {
-        return cardNumber;
-    }
-
-    public void setCardNumber(long cardNumber) {
-        this.cardNumber = cardNumber;
-    }
-
-    public int getExpirationDate() {
-        return expirationDate;
-    }
-
-    public void setExpirationDate(int expirationDate) {
-        this.expirationDate = expirationDate;
+        this.cardOwnerName = cardOwner;
     }
 }
