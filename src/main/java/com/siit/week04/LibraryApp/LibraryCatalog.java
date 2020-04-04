@@ -1,125 +1,114 @@
 package com.siit.week04.LibraryApp;
 
+import com.siit.week04.LibraryApp.Entity.Album;
+import com.siit.week04.LibraryApp.Entity.Book;
+import com.siit.week04.LibraryApp.Entity.Novel;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.Setter;
+
 import java.util.*;
 
+@Setter
+@Getter
+@AllArgsConstructor
 public class LibraryCatalog {
     //fields
-    List<Book> bookCollection = new ArrayList<Book>();
+    private static List<Book> bookCollection = new ArrayList<Book>();
+    private static List<Novel> novels = new ArrayList<>();
+    private static List<Album> albums = new ArrayList<>();
+
     int currentDay = 0;
     int lengthCheckOutPeriod = 10;
     double lateFees = 1.0;
 
-    //comstructors
-    public LibraryCatalog(List<Book> bookCollection) {
-        this.bookCollection = bookCollection;
-    }
 
-    public LibraryCatalog(List<Book> bookCollection, int currentDay, int lengthCheckOutPeriod, double lateFees) {
-        this.bookCollection = bookCollection;
-        this.currentDay = currentDay;
-        this.lengthCheckOutPeriod = lengthCheckOutPeriod;
-        this.lateFees = lateFees;
-    }
-
-    //main
     public static void main(String[] args) {
-        //create list of book
-        List<Book> bookCollection = new ArrayList<Book>();
-          //create book abject
-           Book book1 = new Book("Harry Potter and bla bla", "novel", 789, 1234);
-           Book book2 = new Book("Michelangelo's art collection", "art collection", 431, 1235);
-           Book book3 = new Book("Casa din intuneric", "novel", 200, 1255);
-           Book book4 = new Book("Book to be removed", "art collection", 125, 1295);
-           //assign them subtypes
-           book1.setSubtype("mystery");
-           book2.setSubtype("high quality paper");
-           book3.setSubtype("SF");
-          //add the books to the collection library
-        bookCollection.add(book1);
-        bookCollection.add(book2);
-        bookCollection.add(book3);
-        bookCollection.remove(book4);
+        Novel novel1 = new Novel("Head First Java", 780, 3333, true, "Personal Development");
+        Novel novel2 = new Novel("Head First Design Patterns", 600, 9999, true, "Personal Skils Improvement");
+        Novel novel3 = new Novel("Bla bla bla", 8, 9998, true, "Sci-Fi");
+        novels.add(novel1);
+        novels.add(novel2);
+        novels.add(novel3);
+        novels.remove(novel3);
 
-        System.out.println("\nHello. Welcome to my library. We have various types of books, like: " +
-                                book1.getType() + " and " + book2.getType() +".");
+        Album album1 = new Album("Album ART", 199, 90000, true, "High");
+        Album album2 = new Album("Album State of mind", 500, 90001, false, "Average");
+        Album album3 = new Album("Album bla bla", 99, 1245, true, "Poor");
+        albums.add(album1);
+        albums.add(album2);
+        albums.add(album3);
+        albums.remove(album3);
 
-        //list all books in the library
-        System.out.println("The entire collection of books:");
-        for(int i = 0; i < bookCollection.size(); i++) {
-            System.out.println(bookCollection.get(i).getTitle());
+        addToBookCollection(bookCollection, novels, albums);
+        removeBook(bookCollection, 0);
+        showAllBooks(bookCollection, novels, albums);
+
+
+    }
+    //instance methods
+
+    public static void showAllBooks(List<Book> bookCollention, List<Novel> novels, List<Album> albums) {
+        int size = bookCollention.size();
+
+        for (int i = 0; i <= size - 1; i++) {
+            if (bookCollention.get(i) instanceof Novel) {
+                System.out.println(bookCollention.get(i).getBookName() + " is a novel by type " + ((Novel) bookCollention.get(i)).getType());
+
+            } else if (bookCollention.get(i) instanceof Album) {
+                System.out.println(bookCollention.get(i).getBookName() + " ia an album. The paper quality is " + ((Album) bookCollention.get(i)).getPaperQuality());
+            }
         }
+    }
 
-        System.out.println("Check the availability of the books in the library:");
-        //calling the constuctor on the book coll
-        LibraryCatalog lc = new LibraryCatalog(bookCollection);
-        //to finish
+    public static int addToBookCollection(List books, List novels, List albums) {
+        int novelSize = novels.size();
+        int albumSize = albums.size();
+
+        for (int j = 0; j <= novelSize - 1; j++) {
+            books.add(novels.get(j));
+        }
+        for (int i = 0; i <= albumSize - 1; i++) {
+            books.add(albums.get(i));
+        }
+        return novelSize;
+    }
+
+    public static void removeBook(List<Book> bookCollection, int i) {
+        System.out.println("The title " + bookCollection.get(i).getBookName() + " was removed from the book collection ");
+        bookCollection.remove(i - 1);
     }
 
 
-
-
-    //instance methods
-    public void checkOutBook(String title){
+    public void checkOutBook(String title) {
         Book book = getBook(title);
-        if(book.isAvailable() ){
+        if (book.isAvailable()) {
             notAvailable(book);
         } else {
-            book.setAvailable(true, currentDay);
-            System.out.println("Hello! You just checked out the book "+ title + ". You have to return it in " + (getCurrentDay() + getLengthCheckOutPeriod()) + " days.");
+            book.setAvailable(true);
+            System.out.println("Hello! You just checked out the book " + title + ". You have to return it in " + (getCurrentDay() + getLengthCheckOutPeriod()) + " days.");
         }
     }
 
-    public void returnBook(String title){
+    public void returnBook(String title) {
         Book book = getBook(title);
         int totalDaysLate = currentDay - (book.getDayCheckedOut() + getLengthCheckOutPeriod());
 
-        if(totalDaysLate>0){
+        if (totalDaysLate > 0) {
             System.out.println("You have to pay RON" + getLateFees() + " because you are late reutrining the book with " + totalDaysLate);
         } else {
             System.out.println("Thank you for returining the book on time.");
         }
-        book.setAvailable(false, -1);
+        book.setAvailable(false);
     }
 
-    public void notAvailable(Book book){
-        System.out.println("We are sorry. The book you are looking for: " + book.getTitle() + " is not available anymore. You can check again in " + (book.getDayCheckedOut() +
-                            getLengthCheckOutPeriod()));
+    private Book getBook(String title) {
     }
 
-    //getters and setters
-    public Book getBook(String bookTitle) {
-        return getBookCollection().get(Integer.parseInt(bookTitle));
+    public void notAvailable(Book book) {
+        System.out.println("We are sorry. The book you are looking for: " + book.getBookName() + " is not available anymore. You can check again in " + (book.getDayCheckedOut() +
+                getLengthCheckOutPeriod()));
     }
 
-    public List<Book> getBookCollection() {
-        return bookCollection;
-    }
 
-    public void setBookCollection(List<Book> bookCollection) {
-        this.bookCollection = bookCollection;
-    }
-
-    public int getCurrentDay() {
-        return currentDay;
-    }
-
-    public void setCurrentDay(int currentDay) {
-        this.currentDay = currentDay;
-    }
-
-    public int getLengthCheckOutPeriod() {
-        return lengthCheckOutPeriod;
-    }
-
-    public void setLengthCheckOutPeriod(int lengthCheckOutPeriod) {
-        this.lengthCheckOutPeriod = lengthCheckOutPeriod;
-    }
-
-    public double getLateFees() {
-        return lateFees;
-    }
-
-    public void setLateFees(double lateFees) {
-        this.lateFees = lateFees;
-    }
 }
