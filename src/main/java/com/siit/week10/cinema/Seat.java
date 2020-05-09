@@ -11,7 +11,7 @@ import java.util.Set;
 @AllArgsConstructor
 @Getter
 @Builder
-public class Seat {
+public class Seat implements Comparable<Seat> {
     private String seatNumber;
     private boolean reserved;
     private BigDecimal price;
@@ -19,7 +19,7 @@ public class Seat {
 
 
     public boolean requestSeat(String seatNumber) {
-        Seat requestedSeat = null;
+        Seat requestedSeat = new Seat(seatNumber, BigDecimal.valueOf(100));
         for (Seat seat : seats) {
             if (seat.getSeatNumber().equals(seatNumber)) {
                 requestedSeat = seat;
@@ -58,5 +58,10 @@ public class Seat {
     }
 
     public void add(Seat seat) {
+    }
+
+    @Override
+    public int compareTo(Seat seat) {
+        return this.seatNumber.compareTo(seat.getSeatNumber());
     }
 }

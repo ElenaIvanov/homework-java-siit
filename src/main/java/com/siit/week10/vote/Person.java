@@ -9,7 +9,7 @@ import lombok.Getter;
 @EqualsAndHashCode
 @Getter
 @Builder
-public class VotingPerson {
+public class Person {
     private String lastName;
     private String firstName;
     private String address;

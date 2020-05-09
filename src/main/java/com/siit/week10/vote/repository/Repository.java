@@ -1,18 +1,16 @@
 package com.siit.week10.vote.repository;
 
-import com.siit.week10.vote.VotingPerson;
+import com.siit.week10.vote.Person;
 import lombok.Data;
 
 import java.util.*;
 
-import static com.siit.week10.vote.VotingPerson.*;
-
 @Data
 public class Repository {
-    public final static List<VotingPerson> listOfVoters = new ArrayList<>();
+    public final static List<Person> listOfVoters = new ArrayList<>();
     public final static Map<Integer, String> candidates = new HashMap<>();
 
-    VotingPerson vp1 = VotingPerson.builder()
+    Person vp1 = Person.builder()
             .lastName("Ion")
             .firstName("Andreea")
             .address("Nowhere, no. 3")
@@ -20,7 +18,7 @@ public class Repository {
             .idNumber(123456)
             .idSeries("XP")
             .build();
-    VotingPerson vp2 = VotingPerson.builder()
+    Person vp2 = Person.builder()
             .lastName("Mihai")
             .firstName("Marin")
             .address("Balta Alba, no. 4")
@@ -28,7 +26,7 @@ public class Repository {
             .idNumber(123345)
             .idSeries("DP")
             .build();
-    VotingPerson vp3 = VotingPerson.builder()
+    Person vp3 = Person.builder()
             .lastName("Vasile")
             .firstName("Maria")
             .address("Somewhere, no. 5")
@@ -36,7 +34,7 @@ public class Repository {
             .idNumber(267434)
             .idSeries("CI")
             .build();
-    VotingPerson vp4 = VotingPerson.builder()
+    Person vp4 = Person.builder()
             .lastName("Maria")
             .firstName("Andrei")
             .address("Rainbow, no. 6")
@@ -44,7 +42,7 @@ public class Repository {
             .idNumber(243789)
             .idSeries("DP")
             .build();
-    VotingPerson vp5 = VotingPerson.builder()
+    Person vp5 = Person.builder()
             .lastName("Irod")
             .firstName("Adriana")
             .address("Sulina, no. 175")
@@ -52,7 +50,7 @@ public class Repository {
             .idNumber(345698)
             .idSeries("CI")
             .build();
-    VotingPerson vp6 = VotingPerson.builder()
+    Person vp6 = Person.builder()
             .lastName("Miron")
             .firstName("Cosmina")
             .address("Under the sea, no. 99")
@@ -60,7 +58,7 @@ public class Repository {
             .idNumber(567890)
             .idSeries("DP")
             .build();
-    VotingPerson vp7 = VotingPerson.builder()
+    Person vp7 = Person.builder()
             .lastName("Peppa")
             .firstName("Pig")
             .address("Cartoons, no. 8")
@@ -68,7 +66,7 @@ public class Repository {
             .idNumber(567234)
             .idSeries("XP")
             .build();
-    VotingPerson vp8 = VotingPerson.builder()
+    Person vp8 = Person.builder()
             .lastName("Draghia")
             .firstName("Vladimir")
             .address("Bucuresti, no. 100")
@@ -76,7 +74,7 @@ public class Repository {
             .idNumber(345678)
             .idSeries("XP")
             .build();
-    VotingPerson vp9 = VotingPerson.builder()
+    Person vp9 = Person.builder()
             .lastName("Patrula")
             .firstName("Catelusilor")
             .address("CartoonNetwork, no. 77")
@@ -84,7 +82,7 @@ public class Repository {
             .idNumber(23445)
             .idSeries("XP")
             .build();
-    VotingPerson vp10 = VotingPerson.builder()
+    Person vp10 = Person.builder()
             .lastName("Corvin")
             .firstName("Matei")
             .address("Elsewhere, no. 39")
@@ -93,12 +91,19 @@ public class Repository {
             .idSeries("XP")
             .build();
 
-    public Repository(){
+    public Repository() {
 
-    candidates.put(0, "Alexandru Ioan Cuza");
-    candidates.put(1, "Stefan Cel Mare");
-    candidates.put(2, "Donald Trump");
-}
+        candidates.put(0, "Alexandru Ioan Cuza");
+        candidates.put(1, "Stefan Cel Mare");
+        candidates.put(2, "Donald Trump");
+    }
 
 
+    public List<Person> getAllVoters() {
+        return listOfVoters;
+    }
+
+    public Map<Integer, String> getAllCandidates() {
+        return candidates;
+    }
 }
