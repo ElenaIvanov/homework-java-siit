@@ -1,8 +1,6 @@
 package com.siit.week09.hashmapexercice;
 
 
-import org.assertj.core.util.Lists;
-
 import java.util.*;
 
 public class Service {
@@ -17,12 +15,12 @@ public class Service {
         Hobbies hobby1 = Hobbies.builder()
                 .name("singing")
                 .frequency(7)
-                .address(Lists.list("Romania"))
+                .address(list.of("Romania"))
                 .build();
         Hobbies hobby2 = Hobbies.builder()
                 .name("surfing")
                 .frequency(2)
-                .address(Lists.list("Australia", "Belgia"))
+                .address(list.of("Australia", "Belgia"))
                 .build();
 
         Person person2 = Person.builder()
@@ -32,12 +30,12 @@ public class Service {
         Hobbies hobby3 = Hobbies.builder()
                 .name("shipping")
                 .frequency(5)
-                .address(Lists.list("Belgia", "Holland"))
+                .address(list.of("Belgia", "Holland"))
                 .build();
         Hobbies hobby4 = Hobbies.builder()
                 .name("american football")
                 .frequency(4)
-                .address(Lists.list("United States of America"))
+                .address(list.of("United States of America"))
                 .build();
 
         Person person3 = Person.builder()
@@ -47,17 +45,17 @@ public class Service {
         Hobbies hobby5 = Hobbies.builder()
                 .name("football")
                 .frequency(7)
-                .address(Lists.list("Rusia", "Engalnd"))
+                .address(list.of("Rusia", "Engalnd"))
                 .build();
         Hobbies hobby6 = Hobbies.builder()
                 .name("tenis")
                 .frequency(5)
-                .address(Lists.list("Mexico", "Sri Lanka"))
+                .address(list.of("Mexico", "Sri Lanka"))
                 .build();
 
-        Hobbies.put(person1, Lists.list(hobby1, hobby2, hobby3));
-        Hobbies.put(person2, Lists.list(hobby4, hobby5, hobby1));
-        Hobbies.put(person3, Lists.list(hobby6, hobby2));
+        Hobbies.put(person1, list.of(hobby1, hobby2, hobby3));
+        Hobbies.put(person2, list.of(hobby4, hobby5, hobby1));
+        Hobbies.put(person3, list.of(hobby6, hobby2));
 
 
 
