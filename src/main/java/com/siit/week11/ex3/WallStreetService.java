@@ -70,7 +70,7 @@ public class WallStreetService {
     }
 
     //5. Are any traders based in Milan?.
-    static long getTraderInMiami(String city) {
+    static long getTraderInMilan(String city) {
         return transactions.stream()
                 .map(Transaction::getTrader)
                 .filter(trader -> trader.getCity().equals(city))
@@ -81,7 +81,7 @@ public class WallStreetService {
     //6. Print all transactions’ values from the traders living in Cambridge.
     static long getTransactionValueFromCambrideTraders(String city) {
         return transactions.stream()
-                .filter(transaction -> transaction.getTrader().getCity().equals(city))
+                .filter(t -> t.getTrader().getCity().equals(city))
                 .mapToInt(Transaction::getValue)
                 .sum();
     }
