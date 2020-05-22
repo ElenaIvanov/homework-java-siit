@@ -1,7 +1,7 @@
 package com.siit.week11.ex5Streams;
 
-import com.ibm.streams.tutorial.exercise2.*;
 import com.siit.week11.ex5Streams.util.FeatureMatchers;
+import com.siit.week11.ex5streams.exercise2.*;
 import org.hamcrest.Matcher;
 import org.junit.Test;
 
@@ -12,10 +12,13 @@ import java.util.stream.Collector;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
-import static com.ibm.streams.tutorial.exercise2.ElectoralDistrict.HACKNEY;
 import static java.util.Arrays.asList;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.*;
+
+//package com.siit.week11.ex5streams.exercise2;
+
+
 
 /**
  * Exercise 2 - Filtering and Collecting
@@ -113,6 +116,8 @@ import static org.hamcrest.Matchers.*;
  */
 @SuppressWarnings("unchecked")
 public class Exercise_2_Test {
+
+    private static final ElectoralDistrict HACKNEY = ;
 
     /**
      * Use <code>Stream.filter()</code> to produce a list containing only those 

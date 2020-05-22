@@ -1,10 +1,10 @@
 package com.siit.week11.ex5Streams;
 
-import com.ibm.streams.tutorial.exercise3.Author;
-import com.ibm.streams.tutorial.exercise3.Book;
-import com.ibm.streams.tutorial.exercise3.Books;
-import com.ibm.streams.tutorial.exercise3.Publisher;
 import com.siit.week11.ex5Streams.util.FeatureMatchers;
+import com.siit.week11.ex5streams.exercise3.Author;
+import com.siit.week11.ex5streams.exercise3.Book;
+import com.siit.week11.ex5streams.exercise3.Books;
+import com.siit.week11.ex5streams.exercise3.Publisher;
 import org.hamcrest.Matcher;
 import org.junit.Test;
 
@@ -16,6 +16,7 @@ import java.util.stream.Collector;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
+import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.containsInAnyOrder;
 import static org.hamcrest.Matchers.equalTo;
 

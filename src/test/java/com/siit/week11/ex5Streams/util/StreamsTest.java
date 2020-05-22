@@ -1,5 +1,7 @@
 package com.siit.week11.ex5Streams.util;
 
+import com.siit.week11.ex5streams.Streams;
+import com.siit.week11.ex5streams.User;
 import org.junit.Test;
 
 import java.util.Arrays;

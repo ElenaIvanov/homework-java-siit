@@ -1,21 +1,21 @@
 package com.siit.week11.ex5Streams;
 
-import com.ibm.streams.tutorial.exercise4.Document;
-import com.ibm.streams.tutorial.exercise4.Document.Page;
-import com.ibm.streams.tutorial.exercise4.Documents;
-import com.ibm.streams.tutorial.exercise4.PagePrinter;
-import com.ibm.streams.tutorial.exercise4.Translator;
-import com.ibm.streams.tutorial.exercise4.Translator.Languages;
 import com.siit.week11.ex5Streams.util.FeatureMatchers;
+import com.siit.week11.ex5streams.exercise4.Document;
+import com.siit.week11.ex5streams.exercise4.Documents;
+import com.siit.week11.ex5streams.exercise4.PagePrinter;
+import com.siit.week11.ex5streams.exercise4.Translator;
 import org.hamcrest.Matcher;
 import org.junit.Test;
 
 import java.util.Arrays;
 import java.util.function.Consumer;
 
-import static com.ibm.streams.tutorial.util.CodeUsesMethodReferencesMatcher.usesMethodReferences;
-import static com.ibm.streams.tutorial.util.StringWithComparisonMatcher.isString;
+import static com.siit.week11.ex5Streams.util.CodeUsesMethodReferencesMatcher.usesMethodReferences;
 import static java.lang.String.format;
+import static jdk.nashorn.internal.runtime.JSType.isString;
+import static org.graalvm.compiler.asm.sparc.SPARCAssembler.Fcn.Page;
+import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.*;
 
 /**
@@ -250,7 +250,7 @@ public class Exercise_4_Test {
                 new Page("Today I did maths"),
                 new Page("Today I wrote in my diary")));
 
-        Document translated = Documents.translate(diary, Languages.REVERSISH);
+        Document translated = Documents.translate(diary, Translator.Languages.REVERSISH);
 
         assertThat(translated.getPages(),
                 contains(pageContaining("gnippohs tnew I yadoT"),
@@ -264,6 +264,6 @@ public class Exercise_4_Test {
     }
 
     private static Matcher<Page> pageContaining(String content) {
-        return FeatureMatchers.from(isString(content), "page containing", "contents", Page::getContent);
+        return (Matcher<Page>) FeatureMatchers.from(isString(content), "page containing", "contents", Page::getContent);
     }
 }

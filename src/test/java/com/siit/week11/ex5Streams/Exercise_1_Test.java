@@ -1,9 +1,9 @@
 package com.siit.week11.ex5Streams;
 
-import com.ibm.streams.tutorial.exercise1.Color;
-import com.ibm.streams.tutorial.exercise1.Shape;
-import com.ibm.streams.tutorial.exercise1.Shapes;
 import com.siit.week11.ex5Streams.util.FeatureMatchers;
+import com.siit.week11.ex5streams.exercise1.Color;
+import com.siit.week11.ex5streams.exercise1.Shape;
+import com.siit.week11.ex5streams.exercise1.Shapes;
 import org.hamcrest.Matcher;
 import org.hamcrest.Matchers;
 import org.junit.Test;
@@ -11,7 +11,7 @@ import org.junit.Test;
 import java.util.Arrays;
 import java.util.List;
 
-import static com.ibm.streams.tutorial.exercise1.Color.*;
+import static com.siit.week11.ex5streams.exercise1.Color.*;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.*;
 
@@ -62,6 +62,8 @@ import static org.hamcrest.Matchers.*;
  */
 @SuppressWarnings("unchecked")
 public class Exercise_1_Test {
+
+    private static final Color BLUE = ;
 
     /**
      * Use forEach to change the color of every shape to RED.

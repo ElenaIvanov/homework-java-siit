@@ -1,11 +1,15 @@
 package com.siit.week11.ex5Streams;
 
-import com.ibm.streams.tutorial.exercise5.musicplayer.*;
-import com.ibm.streams.tutorial.exercise5.thirdpartyplugin.CloudScrobblingMusicLibrary;
-import com.ibm.streams.tutorial.exercise5.thirdpartyplugin.LocalFilesystemMusicLibrary;
-import com.ibm.streams.tutorial.exercise5.thirdpartyplugin.UserRatedLocalFilesystemMusicLibrary;
+
 import com.siit.week11.ex5Streams.util.FeatureMatchers;
 import com.siit.week11.ex5Streams.util.HasConcreteMethod;
+import com.siit.week11.ex5streams.exercise5.musicplayer.MusicLibrary;
+import com.siit.week11.ex5streams.exercise5.musicplayer.Rating;
+import com.siit.week11.ex5streams.exercise5.musicplayer.Song;
+import com.siit.week11.ex5streams.exercise5.musicplayer.UserRatedMusicLibrary;
+import com.siit.week11.ex5streams.exercise5.thirdpartyplugin.CloudScrobblingMusicLibrary;
+import com.siit.week11.ex5streams.exercise5.thirdpartyplugin.LocalFilesystemMusicLibrary;
+import com.siit.week11.ex5streams.exercise5.thirdpartyplugin.UserRatedLocalFilesystemMusicLibrary;
 import org.hamcrest.Matcher;
 import org.junit.Test;
 
