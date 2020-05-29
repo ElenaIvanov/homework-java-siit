@@ -2,30 +2,50 @@ package com.siit.week12.io_streams;
 
 import lombok.SneakyThrows;
 
-import java.io.BufferedReader;
-import java.io.FileReader;
-import java.io.FileWriter;
-import java.io.IOException;
+import java.io.*;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 import java.util.function.Predicate;
 import java.util.stream.Stream;
+
+import static java.nio.file.StandardOpenOption.APPEND;
 
 public class IOStreams {
 
     private static Path file = Paths.get("find_out_more.txt");
+    private static Path file1 = Paths.get("find_out_more1.txt");
 
-    public static void main(String[] args) throws IOException {
-
+    public static void main(String[] args) {
+        getListAllFiles(file);
+        getFileByExtension(file, "txt");
+        checkFileIfDirectoryExists(file);
+        checkPathPermissions(file);
+        checkIfPathIsDirectoryOrFile(file);
+        comparePathsLexicographically(file, file1);
+        getLastModifiedTime(file);
+        getInputFromConsole();
+        getFileSize(file);
+        readContentFromFileToByteArray(file);
+        readContentByLine(file);
+        readFileLineByLine("file.txt");
+        readPlainText("filePath");
+        getTextIntoArray(file);
+        getPlainTextFile(file, file1);
+        appendTextToFile(file, "To be appended");
+        getFirstThreeLinesFromFile(file);
+        findLongestWordInText(file);
     }
 
+    //methods
     //    1. Implement a method to get a list of all file/directory names from the given.
     @SneakyThrows
     public static void getListAllFiles(Path path) {
         Stream<Path> pathStream = Files.list(path.getParent());
-        pathStream.forEach(p -> System.out.println(p));
+        pathStream.forEach(System.out::println);
     }
 
     //2. Implement a method to get specific files by extensions from a specified folder.
@@ -33,9 +53,9 @@ public class IOStreams {
     public static void getFileByExtension(Path path, String extension) {
         Stream<Path> list = Files.list(path.getParent())
                 .filter(p -> !Files.isDirectory(p))
-                .filter(p -> p.toString().endsWith(extension))){
+                .filter(p -> p.toString().endsWith(extension));{
 
-            list.forEach(p -> System.out.println(p));
+            list.forEach(System.out::println);
         }
     }
 
@@ -88,7 +108,7 @@ public class IOStreams {
 
     //9. Implement a method to get file size in bytes, kb, mb.
     @SneakyThrows
-    public static void getFileSize(Path path, long type) {
+    public static void getFileSize(Path path) {
         long b = Files.size(path) % 1024;
         long kb = Files.size(path) / 1024;
         long mb = Files.size(path) / (1024 * 1024);
@@ -120,13 +140,14 @@ public class IOStreams {
 
     //13. Implement a method to read a file line by line and store it into a variable.
     @SneakyThrows
-    public static String readFileLineByLine(String path) {
+    public static void readFileLineByLine(String path) {
         String newString = "";
         String str = null;
         BufferedReader bufferedReader = new BufferedReader(new FileReader(path));
         while ((str = bufferedReader.readLine()) != null) {
             newString = newString + bufferedReader + "\n.";
         }
+        System.out.println(newString);
     }
 
     //14. Implement a method to store text file content line by line into an array.
@@ -139,20 +160,53 @@ public class IOStreams {
 
     //15. Implement a method to write and read a plain text file.
     @SneakyThrows
-    public static int getPlainTextFile(Path path1, Path path2){
+    public static int getPlainTextFile(Path path1, Path path2) {
         FileReader fileReader = new FileReader(path1.toFile());
-        FileWriter fileWriter = new FileWriter (path2.toFile(),false)){
+        FileWriter fileWriter = new FileWriter(path2.toFile(), false);{
             int charRead;
-            while((charRead = fileReader.read()) != -1) {
+            while ((charRead = fileReader.read()) != -1) {
                 fileWriter.write(charRead);
             }
-        return 1;
+            return 1;
+        }
     }
 
     //16. Implement a method to append text to an existing file.
+    @SneakyThrows
+    public static void appendTextToFile(Path path, String textToAppend) {
+        BufferedWriter bufferedWriter = Files.newBufferedWriter(path, APPEND);
+        bufferedWriter.write(textToAppend);
+        System.out.println("The resulting text is: " + bufferedWriter);
+    }
 
-//            17. Implement a method to read first 3 lines from a file.
-//
-////            18. Implement a method to find the longest word in a text file.
+    //17. Implement a method to read first 3 lines from a file.
+    @SneakyThrows
+    public static void getFirstThreeLinesFromFile(Path path) {
+        String line;
+        ArrayList<String> text = new ArrayList<>();
+        BufferedReader bufferedReader = Files.newBufferedReader(path);
+        for (int i = 0; i < 3; i++) {
+            line = bufferedReader.readLine().trim();
+            text.add(line);
+        }
+        System.out.println(text.size() + " lines read from the text");
+    }
+
+    //18. Implement a method to find the longest word in a text file.
+    @SneakyThrows
+    public static String findLongestWordInText(Path path) {
+        String currentWord;
+        String longestWord = "";
+        int maxLength = 0;
+        Scanner sc = new Scanner(path);
+        while (sc.hasNext()) {
+            currentWord = sc.next().replaceAll("[^A-Za-z]+", "");
+            if (currentWord.length() > maxLength) {
+                maxLength = currentWord.length();
+                longestWord = currentWord;
+            }
+        }
+        return longestWord;
+    }
 }
 
