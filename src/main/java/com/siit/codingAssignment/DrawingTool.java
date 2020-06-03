@@ -22,19 +22,6 @@ public class DrawingTool {
         shapes.add(new Square(6));
     }
 
-    public void addShape(Shape shape) {
-        boolean key = false;
-        for (Shape shapeS : shapes) {
-            if (shapeS.equals(shape)) {
-                throw new IllegalArgumentException();
-            } else {
-                key = true;
-            }
-        }
-        if (key) {
-            shapes.add(shape);
-        }
-    }
 
     public double getTotalArea(List<Shape> shapes) {
         double totalArea = 0;
@@ -44,13 +31,6 @@ public class DrawingTool {
         return totalArea;
     }
 
-    public double getTotalPerimeter(ArrayList<Shape> shapes) {
-        double totalPerimeter = 0;
-        for (Shape shape : shapes) {
-            totalPerimeter += shape.perimeterValue();
-        }
-        return totalPerimeter;
-    }
 
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
@@ -72,7 +52,7 @@ public class DrawingTool {
                 case "Circle": {
                     System.out.println("Input radius value:");
                     double radius = scanner.nextDouble();
-                    shapes.addShape(new Circle(radius));
+                    shapes.add(new Circle(radius));
                     break;
                 }
                 case "Triangle": {
@@ -82,20 +62,20 @@ public class DrawingTool {
                     double length1 = scanner.nextDouble();
                     double length2 = scanner.nextDouble();
                     double length3 = scanner.nextDouble();
-                    shapes.addShape(new Triangle(base, hight, length1, length2, length3));
+                    shapes.add(new Triangle(base, hight, length1, length2, length3));
                     break;
                 }
                 case "Rectangle": {
                     System.out.println("Input length and width:");
                     double length = scanner.nextDouble();
                     double width = scanner.nextDouble();
-                    shapes.addShape(new Rectangle(length, width));
+                    shapes.add(new Rectangle(length, width));
                     break;
                 }
                 case "Square": {
                     System.out.println("Input length value:");
                     double length = scanner.nextDouble();
-                    shapes.addShape(new Square(length));
+                    shapes.add(new Square(length));
                     break;
                 }
                 break;

@@ -10,7 +10,7 @@ import lombok.*;
 
 public class Triangle implements Shape {
     private double base;
-    private double hight;
+    private double height;
     private double length1;
     private double length2;
     private double length3;
@@ -22,7 +22,7 @@ public class Triangle implements Shape {
 
     @Override
     public double areaValue() {
-        double area = ((base * hight) / 2);
+        double area = ((base * height) / 2);
         return area;
     }
 }
