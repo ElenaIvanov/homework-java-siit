@@ -1,5 +1,7 @@
 package com.siit.week13.v2;
 
+import lombok.SneakyThrows;
+
 import java.util.Random;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
@@ -7,6 +9,7 @@ import java.util.concurrent.ScheduledExecutorService;
 public class Service {
     private static final Random RANDOM = new Random();
 
+    @SneakyThrows
     public static void main(String[] args) {
         FestivalGate gate = new FestivalGate();
         ScheduledExecutorService executor = Executors.newScheduledThreadPool(6);
@@ -23,6 +26,7 @@ public class Service {
         FestivalStatisticsThread statsThread = new FestivalStatisticsThread(
                 gate);
 
+        Thread.sleep(5000);
         statsThread.run();
     }
 
