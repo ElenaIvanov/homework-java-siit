@@ -1,11 +1,13 @@
-package com.siit.week13;
+package com.siit.week13.v1;
 
 import lombok.AllArgsConstructor;
+import lombok.SneakyThrows;
 
 @AllArgsConstructor
 public class FestivalStatistics extends Thread {
     private FestivalGate validatedTicket;
 
+    @SneakyThrows
     @Override
     public void run (){
         while (true){

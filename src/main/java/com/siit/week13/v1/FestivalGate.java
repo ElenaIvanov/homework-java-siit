@@ -1,4 +1,4 @@
-package com.siit.week13;
+package com.siit.week13.v1;
 
 import java.util.LinkedList;
 import java.util.Map;
