@@ -1,51 +1,44 @@
 package com.siit.week04.BankPayment;
 
-import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
 
 import java.math.BigDecimal;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Getter
 @Setter
 @ToString
-public class BankAccount extends User {
-    public String iban;
-    public BigDecimal balance;
-    public List<Card> attachedCardNumbers;
+public class BankAccount {
+    private String iban;
+    private BigDecimal balance;
+    private List<String> attachedCards = new ArrayList<>();
 
-    public BankAccount(String cnp, String name, String email, String password, List<Card> cards, List<BankAccount> bankAccounts) {
-        super(cnp, name, email, password, cards, bankAccounts);
+
+    public BankAccount(String iban) {
+        this.iban = iban;
     }
 
-    //constructors
+    public void attachCard(String cardNumber) {
+        attachedCards.add(cardNumber);
+    }
 
-
-    BigDecimal a = new BigDecimal(String.valueOf(balance));
-
-    //methods
-    public void depositAmount(BigDecimal amount) throws Exception {
-
-        if (a.compareTo(amount) <= 0) {
-            throw new Exception("Please add a positive amount multiple of 10!");
+    public String addMoney(BigDecimal amount) {
+        if (amount.compareTo(BigDecimal.ZERO) >= 0) {
+            balance = balance.add(amount);
+            return "Success";
         }
-
-        this.balance = this.balance.add(a);
+        return "Fail";
     }
 
-    public void withdrawMoney(BigDecimal amount) throws Exception {
-        if (a.compareTo(amount) <= 0) {
-            throw new Exception("Please withdraw a positive amount multiple of 10!");
+    String withdrawMoney(BigDecimal amount) {
+        if (balance.compareTo(amount) >= 0) {
+            balance = balance.subtract(amount);
+            return "Success";
         }
-
-//        if(a.compareTo(amount) < amount){
-//            throw new Exception("Insuficient funds!");
-//        }
-
-        this.balance = this.balance.subtract(amount);
+        return "Fail";
     }
-
 
 }

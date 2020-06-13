@@ -1,16 +1,14 @@
 package com.siit.week04.BankPayment;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.Setter;
-import lombok.ToString;
+import lombok.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 
 @Getter
 @Setter
-@AllArgsConstructor
+@NoArgsConstructor
 @ToString
 public class User {
     private String cnp;
@@ -18,16 +16,15 @@ public class User {
     private String email;
     private String password;
 
-    public List<Card> cards;
-    public List<BankAccount> bankAccounts;
+    private List<Card> cards = new ArrayList<>();
+    private List<BankAccount> bankAccounts = new ArrayList<>();
 
-    //methods
     public void addCard(Card card) {
-        this.cards.add(card);
+        cards.add(card);
     }
 
-    public void addBankAccount(BankAccount bankAccount) {
-        this.bankAccounts.add(bankAccount);
+    public void addBankAccount(BankAccount account) {
+        bankAccounts.add(account);
     }
 }
 

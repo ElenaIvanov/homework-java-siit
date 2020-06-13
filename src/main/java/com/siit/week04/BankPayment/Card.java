@@ -1,28 +1,29 @@
+
 package com.siit.week04.BankPayment;
 
-import lombok.Getter;
-import lombok.Setter;
-import lombok.ToString;
+import java.time.LocalDate;
 
-@Getter
-@Setter
-@ToString
-public class Card extends BankAccount{
-    private long cardNumber;
-    private int expirationDate;
-    private String cardOwnerName;
+public class Card {
+    private String cardNumber;
+    private LocalDate expirationDate;
+    private String cardOwner;
 
-    //constructors
-    public Card(String name, String cnp, String iban, long balance, long cardNumber, int expirationDate) {
-        super(name, cnp, iban, balance);
+    public Card(String cardNumber, LocalDate expirationDate, String cardOwner) {
         this.cardNumber = cardNumber;
         this.expirationDate = expirationDate;
+        this.cardOwner = cardOwner;
     }
 
-    public Card(String name, String cnp, String iban, long balance, long cardNumber, int expirationDate, String cardOwner) {
-        super(name, cnp, iban, balance);
-        this.cardNumber = cardNumber;
-        this.expirationDate = expirationDate;
-        this.cardOwnerName = cardOwner;
+    public String getCardNumber() {
+        return cardNumber;
     }
+
+    public LocalDate getExpirationDate() {
+        return expirationDate;
+    }
+
+    public String getCardOwner() {
+        return cardOwner;
+    }
+
 }
