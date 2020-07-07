@@ -22,7 +22,7 @@ public class DateAndTimeMethods {
 //    Write a method that, for a given month of the current year, lists all of the Mondays in that month.
 
 
-    public static List<Integer> getMondaysFromGivenMonth(int monthNo) {
+    public List<Integer> getMondaysFromGivenMonth(int monthNo) {
         List<Integer> mondays = new ArrayList<>();
 
         if (monthNo > 12 || monthNo < 1) {
