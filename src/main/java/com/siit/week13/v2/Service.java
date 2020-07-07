@@ -7,6 +7,7 @@ import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 
 public class Service {
+    public static final int MAX_SIZE = 100;
     private static final Random RANDOM = new Random();
 
     @SneakyThrows

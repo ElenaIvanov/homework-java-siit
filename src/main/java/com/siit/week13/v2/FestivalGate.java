@@ -32,4 +32,12 @@ public class FestivalGate {
         notifyAll();
         return all;
     }
+
+    public TicketType getTicket() {
+        return queue.poll();
+    }
+
+    public boolean hasTicket() {
+        return !queue.isEmpty();
+    }
 }
