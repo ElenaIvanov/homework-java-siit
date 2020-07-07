@@ -1,13 +1,13 @@
-﻿userID;name
-100;Chandler Bing
-101;Monica Geller
-102;Joey Tribbiani
-103;Phoebe Buffay:
-104;Rachel Green
-105;Ross Geller
-106;David Crane
-107;Jerry Seinfeld
-108;Bill Cosby
-109;Meredith Grey
-110;Derek Shepard
-111;Ben Geller
+﻿userID,name
+100,Chandler Bing
+101,Monica Geller
+102,Joey Tribbiani
+103,Phoebe Buffay:
+104,Rachel Green
+105,Ross Geller
+106,David Crane
+107,Jerry Seinfeld
+108,Bill Cosby
+109,Meredith Grey
+110,Derek Shepard
+111,Ben Geller
